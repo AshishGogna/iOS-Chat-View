@@ -17,6 +17,10 @@
 		2316E4D91CB95D7F00F83D0C /* AGChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2316E4D71CB95D7F00F83D0C /* AGChatViewController.xib */; };
 		2316E4DF1CB96BA900F83D0C /* blackAndYellow.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2316E4DE1CB96BA900F83D0C /* blackAndYellow.jpeg */; };
 		23DC678C1CBA30F8001DCC59 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23DC678B1CBA30F8001DCC59 /* bg.jpg */; };
+		23DC67961CBA9A26001DCC59 /* chat_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DC67931CBA9A26001DCC59 /* chat_arrow.png */; };
+		23DC67971CBA9A26001DCC59 /* chat_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DC67941CBA9A26001DCC59 /* chat_arrow@2x.png */; };
+		23DC67981CBA9A26001DCC59 /* chat_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23DC67951CBA9A26001DCC59 /* chat_arrow@3x.png */; };
+		23DC679C1CBAD380001DCC59 /* bg1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 23DC679B1CBAD380001DCC59 /* bg1.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		2316E4D71CB95D7F00F83D0C /* AGChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGChatViewController.xib; sourceTree = "<group>"; };
 		2316E4DE1CB96BA900F83D0C /* blackAndYellow.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackAndYellow.jpeg; sourceTree = "<group>"; };
 		23DC678B1CBA30F8001DCC59 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		23DC67931CBA9A26001DCC59 /* chat_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_arrow.png; sourceTree = "<group>"; };
+		23DC67941CBA9A26001DCC59 /* chat_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_arrow@2x.png"; sourceTree = "<group>"; };
+		23DC67951CBA9A26001DCC59 /* chat_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_arrow@3x.png"; sourceTree = "<group>"; };
+		23DC679B1CBAD380001DCC59 /* bg1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg1.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +118,9 @@
 				2316E4D51CB95D7F00F83D0C /* AGChatViewController.h */,
 				2316E4D61CB95D7F00F83D0C /* AGChatViewController.m */,
 				2316E4D71CB95D7F00F83D0C /* AGChatViewController.xib */,
+				23DC67931CBA9A26001DCC59 /* chat_arrow.png */,
+				23DC67941CBA9A26001DCC59 /* chat_arrow@2x.png */,
+				23DC67951CBA9A26001DCC59 /* chat_arrow@3x.png */,
 				2316E4DD1CB96BA900F83D0C /* Images */,
 				2316E4AE1CB95CEE00F83D0C /* Assets.xcassets */,
 				2316E4B01CB95CEE00F83D0C /* LaunchScreen.storyboard */,
@@ -150,6 +161,7 @@
 			children = (
 				2316E4DE1CB96BA900F83D0C /* blackAndYellow.jpeg */,
 				23DC678B1CBA30F8001DCC59 /* bg.jpg */,
+				23DC679B1CBAD380001DCC59 /* bg1.JPG */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -258,6 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2316E4B21CB95CEE00F83D0C /* LaunchScreen.storyboard in Resources */,
+				23DC67981CBA9A26001DCC59 /* chat_arrow@3x.png in Resources */,
+				23DC679C1CBAD380001DCC59 /* bg1.JPG in Resources */,
+				23DC67961CBA9A26001DCC59 /* chat_arrow.png in Resources */,
+				23DC67971CBA9A26001DCC59 /* chat_arrow@2x.png in Resources */,
 				2316E4AF1CB95CEE00F83D0C /* Assets.xcassets in Resources */,
 				23DC678C1CBA30F8001DCC59 /* bg.jpg in Resources */,
 				2316E4D91CB95D7F00F83D0C /* AGChatViewController.xib in Resources */,

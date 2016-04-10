@@ -24,7 +24,7 @@
     [super viewWillAppear:animated];
     
     //Example title
-    self.navigationItem.title = @"Ms. White";
+    self.navigationItem.title = @"CJ";
 }
 
 - (void)viewDidLoad {
@@ -34,6 +34,7 @@
     self.chatTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.chatTableView.delegate = self;
     self.chatTableView.dataSource = self;
+    self.backgroundImageView.backgroundColor = Rgb2UIColor(211, 211, 211);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -97,6 +98,8 @@
 {
     CGFloat maxBubbleWidth = screenWidth-50;
     
+    UIView *outerView = [[UIView alloc] init];
+    
     UIView *chatBubbleView = [[UIView alloc] init];
     chatBubbleView.backgroundColor = [UIColor whiteColor];
     chatBubbleView.layer.masksToBounds = YES;
@@ -104,7 +107,7 @@
     chatBubbleView.layer.cornerRadius = 4;
     chatBubbleView.layer.shadowOffset = CGSizeMake(0, 0.7);
     chatBubbleView.layer.shadowRadius = 4;
-    chatBubbleView.layer.shadowOpacity = 0.2;
+    chatBubbleView.layer.shadowOpacity = 0.4;
     
     UIView *chatBubbleContentView = [[UIView alloc] init];
     chatBubbleContentView.backgroundColor = [UIColor whiteColor];
@@ -168,7 +171,6 @@
         [chatBubbleContentView addSubview:chatBubbleLabel];
     }
     
-    
     [chatBubbleView addSubview:chatBubbleContentView];
     
     CGFloat totalHeight = 0;
@@ -185,6 +187,18 @@
     chatBubbleContentView.frame = CGRectMake(5, 5, decidedWidth, totalHeight);
     chatBubbleView.frame = CGRectMake(10, 10, chatBubbleContentView.frame.size.width+10, chatBubbleContentView.frame.size.height+10);
     
+    outerView.frame = CGRectMake(7, 0, chatBubbleView.frame.size.width, chatBubbleView.frame.size.height);
+    
+    UIImageView *arrowIV = [[UIImageView alloc] init];
+    [outerView addSubview:chatBubbleView];
+    arrowIV.image = [UIImage imageNamed:@"chat_arrow"];
+    arrowIV.clipsToBounds = NO;
+    arrowIV.layer.shadowRadius = 4;
+    arrowIV.layer.shadowOpacity = 0.4;
+    arrowIV.layer.shadowOffset = CGSizeMake(-7.0, 0.7);
+    arrowIV.layer.zPosition = 1;
+    arrowIV.frame = CGRectMake(chatBubbleView.frame.origin.x-7, chatBubbleView.frame.size.height-10, 11, 14);
+
     if (isReceived == 0)
     {
         chatBubbleContentView.frame = CGRectMake(5, 5, decidedWidth, totalHeight);
@@ -194,9 +208,19 @@
         chatTimeLabel.backgroundColor = Rgb2UIColor(220, 248, 193);
         chatBubbleLabel.backgroundColor = Rgb2UIColor(220, 248, 193);
         chatBubbleContentView.backgroundColor = Rgb2UIColor(220, 248, 193);
+        
+        arrowIV.transform = CGAffineTransformMakeScale(-1, 1);
+        arrowIV.frame = CGRectMake(chatBubbleView.frame.origin.x+chatBubbleView.frame.size.width-4, chatBubbleView.frame.size.height-10, 11, 14);
+        
+        outerView.frame = CGRectMake(screenWidth-((screenWidth+chatBubbleView.frame.size.width)-chatBubbleView.frame.size.width)-7, 0, chatBubbleView.frame.size.width, chatBubbleView.frame.size.height);
+
+        arrowIV.image = [arrowIV.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [arrowIV setTintColor:Rgb2UIColor(220, 248, 193)];
     }
     
-    return chatBubbleView;
+    [outerView addSubview:arrowIV];
+    
+    return outerView;
 }
 
 #pragma mark - Other functions
@@ -212,18 +236,45 @@
     NSString *dateTimeString = [self getDateTimeStringFromNSDate:[NSDate date]];
     
     //Some custom hardcoded messages
+    /*
     UIView *msg0 = [self createMessageWithScreenWidth:screenWidth Text:@"Hi!" Image:nil DateTime:dateTimeString isReceived:1];
     UIView *msg1 = [self createMessageWithScreenWidth:screenWidth Text:@"Hey, ssup ?" Image:nil DateTime:dateTimeString isReceived:0];
     UIView *msg2 = [self createMessageWithScreenWidth:screenWidth Text:@"Yeah uh huh you know what it iss...." Image:nil DateTime:dateTimeString isReceived:1];
     UIView *msg3 = [self createMessageWithScreenWidth:screenWidth Text:@"Black and yellow black and yellow black and yellow black and yellow" Image:[UIImage imageNamed:@"blackAndYellow.jpeg"] DateTime:dateTimeString isReceived:0];
+    */
     
+    UIView *msg0 = [self createMessageWithScreenWidth:screenWidth Text:@"Hey! Movie tonight?" Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg1 = [self createMessageWithScreenWidth:screenWidth Text:@"Which?" Image:nil DateTime:dateTimeString isReceived:0];
+    UIView *msg2 = [self createMessageWithScreenWidth:screenWidth Text:@"Kung fu panda 3" Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg3 = [self createMessageWithScreenWidth:screenWidth Text:@"I'm in." Image:nil DateTime:dateTimeString isReceived:0];
+    UIView *msg4 = [self createMessageWithScreenWidth:screenWidth Text:@"Great, i'll get the tickets." Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg5 = [self createMessageWithScreenWidth:screenWidth Text:@"Anyways, what about that new job opening you told me about. Can i still apply ?" Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg6 = [self createMessageWithScreenWidth:screenWidth Text:@"Just wondering..." Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg7 = [self createMessageWithScreenWidth:screenWidth Text:@"Yes, you can. Let me refer you to my Manager." Image:nil DateTime:dateTimeString isReceived:0];
+    UIView *msg8 = [self createMessageWithScreenWidth:screenWidth Text:@"Thanks a lot dude !" Image:nil DateTime:dateTimeString isReceived:1];
+
     [bubbles addObject:msg0];
     [bubbles addObject:msg1];
     [bubbles addObject:msg2];
     [bubbles addObject:msg3];
+    [bubbles addObject:msg4];
+    [bubbles addObject:msg5];
+    [bubbles addObject:msg6];
+    [bubbles addObject:msg7];
+    [bubbles addObject:msg8];
     
     self.allMessages = bubbles;
     [self.chatTableView reloadData];
+    [self scrollToTheBottom:NO];
+}
+
+- (void)scrollToTheBottom:(BOOL)animated
+{
+    if (self.allMessages.count>0)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.allMessages.count-1 inSection:0];
+        [self.chatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+    }
 }
 
 - (NSString*)getDateTimeStringFromNSDate: (NSDate*)date
