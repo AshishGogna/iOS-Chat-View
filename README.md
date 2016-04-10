@@ -1,10 +1,11 @@
 # iOS-Chat-View
+####AGChatView
 Plug and Play Chat UI for iOS, written in Objective C. 
 Highly customizable
 Easy to use
 
-![alt text](http://i.imgur.com/oNVWFAX.png "Logo Title Text 1")
-![alt text](http://i.imgur.com/C5Kpwxy.png "Logo Title Text 1")
+![alt text](https://i.imgur.com/6NgStg2.jpg "Screenshot 0")
+![alt text](https://i.imgur.com/XmgLqIR.jpg "Screenshot 1")
 
 ###How to integrate with a project ?
 1. Clone the repo.
