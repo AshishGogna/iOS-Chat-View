@@ -6,7 +6,8 @@ Easy to use
 
 ######Screenshots
 ![alt text](http://i.imgur.com/mnYoiVo.jpg "Screenshot 0")
-![alt text](http://i.imgur.com/t4l3TsT.jpg "Screenshot 1")
+![alt text](http://i.imgur.com/ZwkIM8V.jpg "Screenshot 1")
+![alt text](http://i.imgur.com/t4l3TsT.jpg "Screenshot 2")
 
 ###How to integrate with a project ?
 1. Clone the repo.
