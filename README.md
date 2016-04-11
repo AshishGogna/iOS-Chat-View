@@ -34,5 +34,17 @@ UIView *msg1 = [self createMessageWithScreenWidth:screenWidth Text:@"Hey, ssup ?
 UIView *msg2 = [self createMessageWithScreenWidth:screenWidth Text:@"Yeah uh huh you know what it iss...." Image:nil DateTime:dateTimeString isReceived:1];
 UIView *msg3 = [self createMessageWithScreenWidth:screenWidth Text:@"Black and yellow black and yellow black and yellow black and yellow" Image:[UIImage imageNamed:@"blackAndYellow.jpeg"] DateTime:dateTimeString isReceived:0];
 
+[bubbles addObject:msg0];
+[bubbles addObject:msg1];
+[bubbles addObject:msg2];
+[bubbles addObject:msg3];
+
+//Populate data in the chat table
+self.allMessages = bubbles;
+[self.chatTableView reloadData];
+
+//Scroll the table to bottom
+[self scrollToTheBottom:NO];
+
 ```
 
