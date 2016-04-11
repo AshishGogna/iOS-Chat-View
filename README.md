@@ -17,7 +17,10 @@ Use AGViewController class as your chat view controller class.
 
 Example code - 
 
-```//Get screen width
+
+```
+
+//Get screen width
 double screenWidth = self.view.frame.size.width;
 
 NSMutableArray *bubbles = [[NSMutableArray alloc] init];
@@ -30,5 +33,6 @@ UIView *msg0 = [self createMessageWithScreenWidth:screenWidth Text:@"Hi!" Image:
 UIView *msg1 = [self createMessageWithScreenWidth:screenWidth Text:@"Hey, ssup ?" Image:nil DateTime:dateTimeString isReceived:0];
 UIView *msg2 = [self createMessageWithScreenWidth:screenWidth Text:@"Yeah uh huh you know what it iss...." Image:nil DateTime:dateTimeString isReceived:1];
 UIView *msg3 = [self createMessageWithScreenWidth:screenWidth Text:@"Black and yellow black and yellow black and yellow black and yellow" Image:[UIImage imageNamed:@"blackAndYellow.jpeg"] DateTime:dateTimeString isReceived:0];
+
 ```
 
