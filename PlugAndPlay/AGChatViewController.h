@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AGChatViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface AGChatViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 //IBOutlets
 @property (weak, nonatomic) IBOutlet UITableView *chatTableView;

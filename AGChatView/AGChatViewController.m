@@ -12,6 +12,10 @@
 
 //All messages array (contains UIViews)
 @property (nonatomic) NSArray *allMessages;
+//Subview(s)
+@property (nonatomic) UIView *viewBar;
+@property (nonatomic) UITextView *messageTV;
+@property (nonatomic) UIButton *sendButton;
 
 @end
 
@@ -42,6 +46,44 @@
     [super viewDidAppear:animated];
 
     [self createExampleChat];
+
+    double screenWidth = self.view.frame.size.width;
+    
+    UIView *viewB = [[UIView alloc] initWithFrame:CGRectMake(-1, 0, screenWidth+1, 50)];
+    viewB.backgroundColor = [UIColor whiteColor];
+    viewB.layer.borderWidth = 1.0;
+    viewB.layer.borderColor = [Rgb2UIColor(204, 204, 204) CGColor];
+    
+    self.messageTV = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, screenWidth-80, 30)];
+    self.messageTV.layer.cornerRadius = 5.0;
+    self.messageTV.clipsToBounds = YES;
+    self.messageTV.layer.borderColor = [[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor];
+    self.messageTV.layer.borderWidth = 1.0;
+    self.messageTV.font = [UIFont systemFontOfSize:16];
+    self.messageTV.delegate = self;
+    
+    self.sendButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.sendButton.frame = CGRectMake(screenWidth-70, 0, 70, 50);
+    [self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
+    self.sendButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [self.sendButton addTarget:self action:@selector(sendAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.messageTV];
+    [viewB addSubview:self.sendButton];
+    
+    self.viewBar = viewB;
+    
+    [viewB addSubview:self.messageTV];
+}
+
+- (BOOL)canBecomeFirstResponder{
+    
+    return YES;
+}
+
+- (UIView *)inputAccessoryView{
+    
+    return self.viewBar;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,6 +132,18 @@
 {
     UIView *bubble = self.allMessages[indexPath.row];
     return bubble.frame.size.height+20;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.messageTV resignFirstResponder];
+}
+
+#pragma mark - Buttons' Actions
+
+- (void)sendAction: (id)selector
+{
+    [self.messageTV resignFirstResponder];
 }
 
 #pragma mark - Message UI creation function(s)
@@ -204,18 +258,20 @@
         chatBubbleContentView.frame = CGRectMake(5, 5, decidedWidth, totalHeight);
         chatBubbleView.frame = CGRectMake(screenWidth-(chatBubbleContentView.frame.size.width+10)-10, 10, chatBubbleContentView.frame.size.width+10, chatBubbleContentView.frame.size.height+10);
         
-        chatBubbleView.backgroundColor = Rgb2UIColor(220, 248, 193);
-        chatTimeLabel.backgroundColor = Rgb2UIColor(220, 248, 193);
-        chatBubbleLabel.backgroundColor = Rgb2UIColor(220, 248, 193);
-        chatBubbleContentView.backgroundColor = Rgb2UIColor(220, 248, 193);
+        /*
+        chatBubbleView.backgroundColor = Rgb2UIColor(191,179,183);
+        chatTimeLabel.backgroundColor = Rgb2UIColor(191,179,183);
+        chatBubbleLabel.backgroundColor = Rgb2UIColor(191,179,183);
+        chatBubbleContentView.backgroundColor = Rgb2UIColor(191,179,183);
+        */
         
         arrowIV.transform = CGAffineTransformMakeScale(-1, 1);
         arrowIV.frame = CGRectMake(chatBubbleView.frame.origin.x+chatBubbleView.frame.size.width-4, chatBubbleView.frame.size.height-10, 11, 14);
         
         outerView.frame = CGRectMake(screenWidth-((screenWidth+chatBubbleView.frame.size.width)-chatBubbleView.frame.size.width)-7, 0, chatBubbleView.frame.size.width, chatBubbleView.frame.size.height);
 
-        arrowIV.image = [arrowIV.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [arrowIV setTintColor:Rgb2UIColor(220, 248, 193)];
+        //arrowIV.image = [arrowIV.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        //[arrowIV setTintColor:Rgb2UIColor(191,179,183)];
     }
     
     [outerView addSubview:arrowIV];
@@ -236,6 +292,7 @@
     NSString *dateTimeString = [self getDateTimeStringFromNSDate:[NSDate date]];
     
     //Some custom hardcoded messages
+    //Example 1
     /*
     UIView *msg0 = [self createMessageWithScreenWidth:screenWidth Text:@"Hi!" Image:nil DateTime:dateTimeString isReceived:1];
     UIView *msg1 = [self createMessageWithScreenWidth:screenWidth Text:@"Hey, ssup ?" Image:nil DateTime:dateTimeString isReceived:0];
@@ -243,6 +300,7 @@
     UIView *msg3 = [self createMessageWithScreenWidth:screenWidth Text:@"Black and yellow black and yellow black and yellow black and yellow" Image:[UIImage imageNamed:@"blackAndYellow.jpeg"] DateTime:dateTimeString isReceived:0];
     */
     
+    //Example 2
     UIView *msg0 = [self createMessageWithScreenWidth:screenWidth Text:@"Hey! Movie tonight?" Image:nil DateTime:dateTimeString isReceived:1];
     UIView *msg1 = [self createMessageWithScreenWidth:screenWidth Text:@"Which?" Image:nil DateTime:dateTimeString isReceived:0];
     UIView *msg2 = [self createMessageWithScreenWidth:screenWidth Text:@"Kung fu panda 3" Image:nil DateTime:dateTimeString isReceived:1];
@@ -263,8 +321,11 @@
     [bubbles addObject:msg7];
     [bubbles addObject:msg8];
     
+    //Populate data in the chat table
     self.allMessages = bubbles;
     [self.chatTableView reloadData];
+
+    //Scroll the table to bottom
     [self scrollToTheBottom:NO];
 }
 

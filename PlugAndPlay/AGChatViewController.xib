@@ -17,12 +17,11 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="uOG-PZ-b73">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="uOG-PZ-b73">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nlz-9s-NL2">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -33,12 +32,12 @@
                 <constraint firstItem="uOG-PZ-b73" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QNX-oR-YVp"/>
                 <constraint firstAttribute="trailing" secondItem="uOG-PZ-b73" secondAttribute="trailing" id="Zk8-jn-hB3"/>
                 <constraint firstItem="uOG-PZ-b73" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pfY-Rt-rNO"/>
-                <constraint firstAttribute="bottom" secondItem="Nlz-9s-NL2" secondAttribute="bottom" constant="50" id="rwz-h2-OCT"/>
+                <constraint firstAttribute="bottom" secondItem="Nlz-9s-NL2" secondAttribute="bottom" id="rwz-h2-OCT"/>
                 <constraint firstAttribute="trailing" secondItem="Nlz-9s-NL2" secondAttribute="trailing" id="un4-HT-iZa"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="bg1.JPG" width="720" height="1017"/>
+        <image name="bg.jpg" width="441" height="373"/>
     </resources>
 </document>
