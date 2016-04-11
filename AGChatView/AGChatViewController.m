@@ -11,7 +11,7 @@
 @interface AGChatViewController ()
 
 //All messages array (contains UIViews)
-@property (nonatomic) NSArray *allMessages;
+@property (nonatomic) NSMutableArray *allMessages;
 //Subview(s)
 @property (nonatomic) UIView *viewBar;
 @property (nonatomic) UITextView *messageTV;
@@ -143,13 +143,23 @@
 
 - (void)sendAction: (id)selector
 {
+    UIView *newMsg = [self createMessageWithText:self.messageTV.text Image:nil DateTime:[self getDateTimeStringFromNSDate:[NSDate date]] isReceived:0];
+
+    [self.allMessages addObject:newMsg];
+    [self.chatTableView reloadData];
+    [self scrollToTheBottom:YES];
+    
     [self.messageTV resignFirstResponder];
+    self.messageTV.text = @"";
 }
 
 #pragma mark - Message UI creation function(s)
 
-- (UIView*)createMessageWithScreenWidth: (CGFloat)screenWidth Text: (NSString*)text Image: (UIImage*)image DateTime: (NSString*)dateTimeString isReceived: (BOOL)isReceived
+- (UIView*)createMessageWithText: (NSString*)text Image: (UIImage*)image DateTime: (NSString*)dateTimeString isReceived: (BOOL)isReceived
 {
+    //Get screen width
+    double screenWidth = self.view.frame.size.width;
+
     CGFloat maxBubbleWidth = screenWidth-50;
     
     UIView *outerView = [[UIView alloc] init];
@@ -283,9 +293,6 @@
 
 - (void)createExampleChat
 {
-    //Get screen width
-    double screenWidth = self.view.frame.size.width;
-    
     NSMutableArray *bubbles = [[NSMutableArray alloc] init];
     
     //Current date and time formatted string
@@ -301,15 +308,15 @@
     */
     
     //Example 2
-    UIView *msg0 = [self createMessageWithScreenWidth:screenWidth Text:@"Hey! Movie tonight?" Image:nil DateTime:dateTimeString isReceived:1];
-    UIView *msg1 = [self createMessageWithScreenWidth:screenWidth Text:@"Which?" Image:nil DateTime:dateTimeString isReceived:0];
-    UIView *msg2 = [self createMessageWithScreenWidth:screenWidth Text:@"Kung fu panda 3" Image:nil DateTime:dateTimeString isReceived:1];
-    UIView *msg3 = [self createMessageWithScreenWidth:screenWidth Text:@"I'm in." Image:nil DateTime:dateTimeString isReceived:0];
-    UIView *msg4 = [self createMessageWithScreenWidth:screenWidth Text:@"Great, i'll get the tickets." Image:nil DateTime:dateTimeString isReceived:1];
-    UIView *msg5 = [self createMessageWithScreenWidth:screenWidth Text:@"Anyways, what about that new job opening you told me about. Can i still apply ?" Image:nil DateTime:dateTimeString isReceived:1];
-    UIView *msg6 = [self createMessageWithScreenWidth:screenWidth Text:@"Just wondering..." Image:nil DateTime:dateTimeString isReceived:1];
-    UIView *msg7 = [self createMessageWithScreenWidth:screenWidth Text:@"Yes, you can. Let me refer you to my Manager." Image:nil DateTime:dateTimeString isReceived:0];
-    UIView *msg8 = [self createMessageWithScreenWidth:screenWidth Text:@"Thanks a lot dude !" Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg0 = [self createMessageWithText:@"Hey! Movie tonight?" Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg1 = [self createMessageWithText:@"Which?" Image:nil DateTime:dateTimeString isReceived:0];
+    UIView *msg2 = [self createMessageWithText:@"Kung fu panda 3" Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg3 = [self createMessageWithText:@"I'm in." Image:nil DateTime:dateTimeString isReceived:0];
+    UIView *msg4 = [self createMessageWithText:@"Great, i'll get the tickets." Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg5 = [self createMessageWithText:@"Anyways, what about that new job opening you told me about. Can i still apply ?" Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg6 = [self createMessageWithText:@"Just wondering..." Image:nil DateTime:dateTimeString isReceived:1];
+    UIView *msg7 = [self createMessageWithText:@"Yes, you can. Let me refer you to my Manager." Image:nil DateTime:dateTimeString isReceived:0];
+    UIView *msg8 = [self createMessageWithText:@"Thanks a lot dude !" Image:nil DateTime:dateTimeString isReceived:1];
 
     [bubbles addObject:msg0];
     [bubbles addObject:msg1];
